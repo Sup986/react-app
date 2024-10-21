@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import axios from 'axios';
 
-const API_URL = 'https://dummyjson.com/users/1'; // Replace the placeholder with an actual user ID
+const API_URL = 'https://dummyjson.com/users/1'; 
 
 const UserList = ({ addUser }) => {
     useEffect(() => {
@@ -11,8 +11,8 @@ const UserList = ({ addUser }) => {
 
                 console.log("API Response:", response.data);
 
-                const name = response.data.firstName + ' ' + response.data.lastName; // Adjust based on response structure
-                const gender = response.data.gender; // Assuming 'gender' exists in the response
+                const name = response.data.firstName + ' ' + response.data.lastName; 
+                const gender = response.data.gender; 
 
                 if (name && gender) {
                     console.log(`Adding user: ${name}, ${gender}`);
