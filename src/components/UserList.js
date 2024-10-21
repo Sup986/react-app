@@ -1,26 +1,18 @@
 import React, { useEffect } from 'react';
 import axios from 'axios';
 
-const API_URL = 'https://api.api-ninjas.com/v1/randomuser';
-const API_KEY = 'Ie6g4ViLqIwUpCKmPViL0A==lIXwIiTOsxgU37j3'; // Replace with your actual API key
+const API_URL = 'https://dummyjson.com/users/1'; // Replace the placeholder with an actual user ID
 
 const UserList = ({ addUser }) => {
     useEffect(() => {
         const fetchUser = async () => {
             try {
-                const response = await axios.get(API_URL, {
-                    headers: {
-                        'X-Api-Key': API_KEY
-                    }
-                });
+                const response = await axios.get(API_URL);
 
-                // Log the full API response to understand its structure
                 console.log("API Response:", response.data);
 
-                // Extract the name and convert 'sex' to 'gender'
-                const name = response.data.name; // Adjusted based on your response
-                const sex = response.data.sex; // Adjusted based on your response
-                const gender = sex === "M" ? "male" : sex === "F" ? "female" : "unknown";
+                const name = response.data.firstName + ' ' + response.data.lastName; // Adjust based on response structure
+                const gender = response.data.gender; // Assuming 'gender' exists in the response
 
                 if (name && gender) {
                     console.log(`Adding user: ${name}, ${gender}`);
